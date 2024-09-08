@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture HTML Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        .result-container textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lecture HTML Code Generator</h1>
+        
+        <label for="lectureTitle">Lecture Title:</label>
+        <input type="text" id="lectureTitle" placeholder="Enter Lecture Title">
+
+        <label for="lectureLink">Lecture Video Link (M3U8):</label>
+        <input type="text" id="lectureLink" placeholder="Enter Lecture Video Link">
+
+        <button onclick="generateHtml()">Generate HTML Code</button>
+
+        <div class="result-container">
+            <label for="result">Generated HTML Code:</label>
+            <textarea id="result" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function generateHtml() {
+            const title = document.getElementById('lectureTitle').value;
+            const link = document.getElementById('lectureLink').value;
+
+            if (title && link) {
+                const htmlCode = `<option value="${link}">${title}</option>`;
+                document.getElementById('result').value = htmlCode;
+            } else {
+                alert('Please fill in both the title and the link.');
+            }
+        }
+    </script>
+</body>
+</html>
